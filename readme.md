@@ -1,0 +1,1 @@
+Credits and inspiration by: https://github.com/heroku/stack-images
