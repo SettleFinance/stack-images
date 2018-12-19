@@ -196,10 +196,11 @@ declare -a arr=("nodejs"
                 "ansible"
                 "kubectl")
 
+mkdir -p /etc/buildpacks/
+				
 for i in "${arr[@]}"
 do
    echo "Cloning $i buildpack ..."
-   mkdir -p /etc/buildpacks/heroku-buildpack-$1
    git clone https://github.com/heroku/heroku-buildpack-$i.git /etc/buildpacks/heroku-buildpack-$1
 done
 
