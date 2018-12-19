@@ -123,6 +123,7 @@ apt-get install -y --force-yes \
     locales \
     make \
 	nodejs \
+	npm \
 	nginx \
     netcat-openbsd \
     openssh-client \
