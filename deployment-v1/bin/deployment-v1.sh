@@ -82,8 +82,6 @@ IIP9up4xwgje9LB7fMxsSkCDTHOk
 PGDG_ACCC4CF8
 
 
-curl -sL https://deb.nodesource.com/setup_11.x | bash -
-
 apt-get update
 apt-get upgrade -y --force-yes
 apt-get install -y --force-yes \
@@ -122,8 +120,6 @@ apt-get install -y --force-yes \
     libzip4 \
     locales \
     make \
-	nodejs \
-	npm \
 	nginx \
     netcat-openbsd \
     openssh-client \
@@ -139,11 +135,6 @@ apt-get install -y --force-yes \
     tzdata \
     wget \
     zip \
-	
-
-npm install -g @angular/cli
-npm install --save-dev @angular-devkit/build-angular
-npm install -g heroku
 	
 
 # install the JDK for certificates, then remove it
@@ -174,75 +165,71 @@ rm -rf /root/*
 rm -rf /tmp/*
 rm -rf /var/cache/apt/archives/*.deb
 
+mkdir -p /tmp/buildpacks /tmp/build_cache /tmp/env
+cd /tmp/buildpacks/
 
-cd /tmp/buildpack/
-
-PACK_NAME=nodejs
-mkdir -p /tmp/buildpack/$PACK_NAME /tmp/build_cache /tmp/env
-git clone https://github.com/heroku/heroku-buildpack-$PACK_NAME.git
-
-declare -a arr=("ruby" 
+declare -a arr=("nodejs"
+                "ruby" 
                 "go"
                 "php"
-				"scala"
-				"conjure"
-				"hello"
-				"erlang"
-				"java"
-				"static"
-				"pgbouncer"
-				"google-chrome"
-				"nginx"
-				"play"
-				"c"
-				"gradle"
-				"grails"
-				"jvm-common"
-				"emberjs"
-				"core-data"
-				"redis"
-				"ember-cli"
-				"xvfb-google-chrome"
-				"chromedriver"
-				"ember-cli-deploy"
-				"kong"
-				"multi-procfile"
-				"testrunner"
-				"ci-postgresql"
-				"cli"
-				"space-proxy"
-				"locale"
-				"metrics"
-				"sprettur"
-				"ci-redis"
-				"terraform"
-				"activestorage-preview"
-				"yara"
-				"elixir"
-				"cqlsh"
-				"addon-wait"
-				"imagemagick-policy"
-				"ssdeep"
-				"graphicsmagick"
-				"l2met-shuttle"
-				"inline"
-				"envoy-proxy"
-				"awscli"
-				"webapp-runner"
-				"mustache"
-				"ansible"
-				"kubectl"
-				"runit"
-				"github-netrc"
-				"no"
-				"router"
-                )
+                "scala"
+                "conjure"
+                "hello"
+                "erlang"
+                "java"
+                "static"
+                "pgbouncer"
+                "google-chrome"
+                "nginx"
+                "play"
+                "c"
+                "gradle"
+                "grails"
+                "jvm-common"
+                "emberjs"
+                "core-data"
+                "redis"
+                "ember-cli"
+                "xvfb-google-chrome"
+                "chromedriver"
+                "ember-cli-deploy"
+                "kong"
+                "multi-procfile"
+                "testrunner"
+                "ci-postgresql"
+                "cli"
+                "space-proxy"
+                "locale"
+                "metrics"
+                "sprettur"
+                "ci-redis"
+                "terraform"
+                "activestorage-preview"
+                "yara"
+                "elixir"
+                "cqlsh"
+                "addon-wait"
+                "imagemagick-policy"
+                "ssdeep"
+                "graphicsmagick"
+                "l2met-shuttle"
+                "inline"
+                "envoy-proxy"
+                "awscli"
+                "webapp-runner"
+                "mustache"
+                "ansible"
+                "kubectl"
+                "runit"
+                "github-netrc"
+                "no"
+                "router")
 
 for i in "${arr[@]}"
 do
    echo "Cloning $i buildpack ..."
-   mkdir -p /tmp/buildpack/$PACK_NAME 
    git clone https://github.com/heroku/heroku-buildpack-$i.git
+   chmod +x -R /tmp/heroku-buildpack-$i/
 done
 
 
