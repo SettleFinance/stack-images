@@ -229,7 +229,7 @@ for i in "${arr[@]}"
 do
    echo "Cloning $i buildpack ..."
    git clone https://github.com/heroku/heroku-buildpack-$i.git
-   chmod +x -R /tmp/heroku-buildpack-$i/
+   chmod +x -R /tmp/buildpacks/heroku-buildpack-$i/
 done
 
 
