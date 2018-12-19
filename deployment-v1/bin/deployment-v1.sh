@@ -166,6 +166,7 @@ rm -rf /var/cache/apt/archives/*.deb
 
 mkdir -p /etc/buildpacks /etc/build_cache /etc/env /tmp/build_cache /tmp/env
 
+
 declare -a arr=("nodejs"
                 "ruby" 
                 "go"
@@ -196,12 +197,12 @@ declare -a arr=("nodejs"
                 "ansible"
                 "kubectl")
 
-mkdir -p /etc/buildpacks/
+
 				
 for i in "${arr[@]}"
 do
    echo "Cloning $i buildpack ..."
-   git clone https://github.com/heroku/heroku-buildpack-$i.git /etc/buildpacks/heroku-buildpack-$1
+   git clone https://github.com/heroku/heroku-buildpack-$i.git /etc/buildpacks/heroku-buildpack-$i
 done
 
 chmod +x -R /etc/buildpacks
