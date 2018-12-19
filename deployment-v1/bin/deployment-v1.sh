@@ -120,7 +120,6 @@ apt-get install -y --force-yes \
     libzip4 \
     locales \
     make \
-	nginx \
     netcat-openbsd \
     openssh-client \
     openssh-server \
@@ -165,8 +164,7 @@ rm -rf /root/*
 rm -rf /tmp/*
 rm -rf /var/cache/apt/archives/*.deb
 
-mkdir -p /etc/buildpacks /etc/build_cache /etc/env
-cd /etc/buildpacks/
+mkdir -p /etc/buildpacks /etc/build_cache /etc/env /tmp/build_cache /tmp/env
 
 declare -a arr=("nodejs"
                 "ruby" 
@@ -201,11 +199,13 @@ declare -a arr=("nodejs"
 for i in "${arr[@]}"
 do
    echo "Cloning $i buildpack ..."
-   git clone https://github.com/heroku/heroku-buildpack-$i.git
-   chmod +x -R /etc/buildpacks/heroku-buildpack-$i/
+   mkdir -p /etc/buildpacks/heroku-buildpack-$1
+   git clone https://github.com/heroku/heroku-buildpack-$i.git /etc/buildpacks/heroku-buildpack-$1
 done
 
-
+chmod +x -R /etc/buildpacks
+chmod +x -R /etc/build_cache
+chmod +x -R /etc/env
 
 
 
