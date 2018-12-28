@@ -12,4 +12,4 @@ RUN apt-get update && apt-get -qq install -y nodejs && apt-get -qq install -y ng
 
 RUN npm install -g @angular/cli
 RUN npm install -g heroku
-
+RUN npm install -g web3 --unsafe-perm=true --allow-root
