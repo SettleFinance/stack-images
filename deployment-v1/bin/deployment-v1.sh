@@ -209,7 +209,8 @@ chmod +x -R /etc/buildpacks
 chmod +x -R /etc/build_cache
 chmod +x -R /etc/env
 
-
+echo "Creating GIT simlink"
+ln -s /usr/bin/git /bin/git
 
 
 
