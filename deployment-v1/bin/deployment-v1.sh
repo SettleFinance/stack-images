@@ -87,6 +87,7 @@ apt-get upgrade -y --force-yes
 apt-get install -y --force-yes \
     apt-transport-https \
     apt-utils \
+	build-essential \
     bind9-host \
     bzip2 \
     coreutils \
@@ -212,6 +213,8 @@ chmod +x -R /etc/env
 echo "Creating GIT simlink"
 ln -s /usr/bin/git /bin/git
 
+which git
+/usr/bin/git --version
 
 
 
