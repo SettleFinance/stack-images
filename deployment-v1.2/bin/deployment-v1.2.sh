@@ -221,9 +221,9 @@ wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-pr
 dpkg -i packages-microsoft-prod.deb
 apt-get install apt-transport-https
 apt-get update
-apt-get install aspnetcore-runtime-2.1
-apt-get install dotnet-sdk-2.2
-apt-get install dotnet-sdk-2.1.105
+apt-get install -y aspnetcore-runtime-2.1
+apt-get install -y dotnet-sdk-2.2
+apt-get install -y dotnet-sdk-2.1.105
 apt-get install -y libunwind-dev
 
 
